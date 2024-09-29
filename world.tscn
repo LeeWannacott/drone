@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=4 uid="uid://dfbj0uf3hx8xw"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_dbfl2"]
+[ext_resource type="Texture2D" uid="uid://snugtrpdrlr2" path="res://road_f1_v1.png" id="1_q1tx3"]
+[ext_resource type="Script" path="res://resources.gd" id="2_mdkto"]
+[ext_resource type="PackedScene" uid="uid://ci7pdjg4ry3gb" path="res://gem.tscn" id="4_gya5b"]
+[ext_resource type="PackedScene" uid="uid://cv75hi5fwiisu" path="res://drone.tscn" id="5_ui4t2"]
+[ext_resource type="Script" path="res://utils.gd" id="6_4a3d0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1obcd"]
+texture = ExtResource("1_q1tx3")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_svtj3"]
+scenes/1/scene = ExtResource("4_gya5b")
+
+[sub_resource type="TileSet" id="TileSet_hqkll"]
+tile_size = Vector2i(40, 40)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_1obcd")
+sources/2 = SubResource("TileSetScenesCollectionSource_svtj3")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_436eo"]
+vertices = PackedVector2Array(290, 410, 629.141, 457.172, -599.719, 476.828, 190, 410, -30, 210, 190, 270, -510, 410, -90, 210, 290, 270, -30, 150, -570, 410, -578.25, -325.352, -570, 350, 560.812, -366.656, -270, 170, -270, 110, -90, 150, -330, 170, -510, 350, -330, 110)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6, 7), PackedInt32Array(8, 5, 4, 9), PackedInt32Array(10, 6, 2), PackedInt32Array(10, 2, 11, 12), PackedInt32Array(13, 1, 0, 8), PackedInt32Array(11, 13, 8, 9), PackedInt32Array(14, 15, 16, 7), PackedInt32Array(17, 14, 7, 6, 18), PackedInt32Array(17, 18, 12, 11, 19), PackedInt32Array(11, 9, 16, 15), PackedInt32Array(11, 15, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-588, -335, -610, 487, 640, 467, 570, -377)])
+source_geometry_mode = 2
+source_geometry_group_name = &"resources"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a27g5"]
+radius = 115.213
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_dbfl2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="background" type="TileMapLayer" parent="."]
+
+[node name="resources" type="TileMapLayer" parent="." groups=["resources"]]
+tile_map_data = PackedByteArray("AADp/+v/AAAAAAAAAADz/+v/AAAAAAAAAAAEAOv/AAAAAAAAAAAQAOv/AAAAAAAAAADy/wkAAQAAAAAAAAAFAAkAAQAAAAAAAAD4/wMAAQAAAAAAAAAGAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAGAAgAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAkAAQAAAAAAAAAHAAMAAgAAAAAAAQD9/wcAAgAAAAAAAQD+/wQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_hqkll")
+script = ExtResource("2_mdkto")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_436eo")
+
+[node name="drop_off" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="drop_off"]
+shape = SubResource("CircleShape2D_a27g5")
+
+[node name="drone" parent="." instance=ExtResource("5_ui4t2")]
+
+[node name="drone2" parent="." instance=ExtResource("5_ui4t2")]
+
+[node name="utils" type="Node" parent="." groups=["utils"]]
+script = ExtResource("6_4a3d0")
