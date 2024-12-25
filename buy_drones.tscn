@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci4rb0adf2brp"]
+
+[ext_resource type="Texture2D" uid="uid://b41nr6p732qdr" path="res://player_settings/iconset/149.png" id="1_87xg6"]
+[ext_resource type="Script" uid="uid://r432k801pf6" path="res://buy_drones.gd" id="1_ophps"]
+[ext_resource type="Texture2D" uid="uid://runk7wc5jxo" path="res://player_settings/iconset/150.png" id="2_ophps"]
+[ext_resource type="Script" uid="uid://bpc70ens7fgna" path="res://draw_drone.gd" id="4_xbl4f"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_87xg6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ophps"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="buy_drones" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ophps")
+metadata/_edit_vertical_guides_ = [-137.0]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 100.0
+
+[node name="base_drone" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="draw_drone" type="Node2D" parent="HBoxContainer/base_drone"]
+z_index = 1
+position = Vector2(43, 33)
+script = ExtResource("4_xbl4f")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/base_drone"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("CanvasTexture_87xg6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/base_drone/TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="buy_drone" type="Button" parent="HBoxContainer/base_drone/TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+tooltip_text = "Increase Drone"
+icon = ExtResource("1_87xg6")
+flat = true
+
+[node name="increase_drone_speed" type="Button" parent="HBoxContainer/base_drone/TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Drone Speed"
+icon = ExtResource("2_ophps")
+flat = true
+icon_alignment = 1
+
+[node name="base_drone_amount" type="Label" parent="HBoxContainer/base_drone/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 46.0
+offset_right = 50.0
+offset_bottom = 69.0
+grow_horizontal = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_ophps")
+
+[node name="drill_drone" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="draw_drone2" type="Node2D" parent="HBoxContainer/drill_drone"]
+z_index = 1
+position = Vector2(43, 32)
+script = ExtResource("4_xbl4f")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/drill_drone"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("CanvasTexture_87xg6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/drill_drone/TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="buy_drill_drone" type="Button" parent="HBoxContainer/drill_drone/TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+tooltip_text = "Increase Drone"
+icon = ExtResource("1_87xg6")
+flat = true
+
+[node name="increase_drill_drone_speed" type="Button" parent="HBoxContainer/drill_drone/TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Drone Speed"
+icon = ExtResource("2_ophps")
+flat = true
+icon_alignment = 1
+
+[node name="drill_drone_amount" type="Label" parent="HBoxContainer/drill_drone/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 46.0
+offset_right = 50.0
+offset_bottom = 69.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ophps")

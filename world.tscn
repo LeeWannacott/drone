@@ -1,61 +1,127 @@
-[gd_scene load_steps=12 format=4 uid="uid://dfbj0uf3hx8xw"]
+[gd_scene load_steps=18 format=4 uid="uid://dfbj0uf3hx8xw"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_dbfl2"]
-[ext_resource type="Texture2D" uid="uid://snugtrpdrlr2" path="res://road_f1_v1.png" id="1_q1tx3"]
-[ext_resource type="Script" path="res://resources.gd" id="2_mdkto"]
+[ext_resource type="Script" uid="uid://dcvwc6r8ynlag" path="res://world.gd" id="1_036b0"]
+[ext_resource type="Texture2D" uid="uid://bxmp53ntbbrta" path="res://icon.svg" id="2_dwbse"]
+[ext_resource type="Script" uid="uid://b8q4m4louhfwk" path="res://player.gd" id="2_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://budg1a15um0bb" path="res://player_settings/player_settings.tscn" id="3_gbfbk"]
+[ext_resource type="Script" uid="uid://ds5y2jvu2un3k" path="res://resources.gd" id="4_dwbse"]
 [ext_resource type="PackedScene" uid="uid://ci7pdjg4ry3gb" path="res://gem.tscn" id="4_gya5b"]
+[ext_resource type="PackedScene" uid="uid://ci4rb0adf2brp" path="res://buy_drones.tscn" id="4_ioo17"]
+[ext_resource type="Script" uid="uid://dy6aqbk8ddifv" path="res://utils.gd" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://cv75hi5fwiisu" path="res://drone.tscn" id="5_ui4t2"]
-[ext_resource type="Script" path="res://utils.gd" id="6_4a3d0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_18br3"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w62lf"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1obcd"]
-texture = ExtResource("1_q1tx3")
-texture_region_size = Vector2i(40, 40)
+texture = ExtResource("2_dwbse")
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_w62lf")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_svtj3"]
 scenes/1/scene = ExtResource("4_gya5b")
 
 [sub_resource type="TileSet" id="TileSet_hqkll"]
-tile_size = Vector2i(40, 40)
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1obcd")
 sources/2 = SubResource("TileSetScenesCollectionSource_svtj3")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_436eo"]
-vertices = PackedVector2Array(290, 410, 629.141, 457.172, -599.719, 476.828, 190, 410, -30, 210, 190, 270, -510, 410, -90, 210, 290, 270, -30, 150, -570, 410, -578.25, -325.352, -570, 350, 560.812, -366.656, -270, 170, -270, 110, -90, 150, -330, 170, -510, 350, -330, 110)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 3, 2, 6, 7), PackedInt32Array(8, 5, 4, 9), PackedInt32Array(10, 6, 2), PackedInt32Array(10, 2, 11, 12), PackedInt32Array(13, 1, 0, 8), PackedInt32Array(11, 13, 8, 9), PackedInt32Array(14, 15, 16, 7), PackedInt32Array(17, 14, 7, 6, 18), PackedInt32Array(17, 18, 12, 11, 19), PackedInt32Array(11, 9, 16, 15), PackedInt32Array(11, 15, 19)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-588, -335, -610, 487, 640, 467, 570, -377)])
-source_geometry_mode = 2
+vertices = PackedVector2Array(486, 410, 282, 410, -26, 358, -26, 218, 486, 678, 1099.37, 774, -989.859, 774, 282, 678, -794, 678, -934, 678, -936.969, -491.477, -934, 538, -410, 294, -166, 218, -166, 358, -410, 154, 1056.63, -554.438, -550, 294, -794, 538, -550, 154)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(1, 7, 6, 8, 2), PackedInt32Array(9, 8, 6), PackedInt32Array(9, 6, 10, 11), PackedInt32Array(12, 13, 14, 8), PackedInt32Array(13, 12, 15), PackedInt32Array(16, 5, 4, 0), PackedInt32Array(10, 16, 0, 3), PackedInt32Array(14, 2, 8), PackedInt32Array(17, 12, 8, 18), PackedInt32Array(17, 18, 11, 10, 19), PackedInt32Array(10, 3, 13, 15), PackedInt32Array(10, 15, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-985, -540, -1042, 824, 1151, 824, 1105, -606)])
+source_geometry_mode = 1
 source_geometry_group_name = &"resources"
+cell_size = 10.0
+border_size = 10.0
+agent_radius = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a27g5"]
-radius = 115.213
+radius = 250.252
 
-[node name="world" type="Node2D"]
-script = ExtResource("1_dbfl2")
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pkg7o"]
+cull_mode = 1
+polygon = PackedVector2Array(238.739, 300.9, 237.673, 382.114, 314.089, 357.667, 319.227, 275.803)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="world" type="Node2D" groups=["world"]]
+script = ExtResource("1_036b0")
 
-[node name="background" type="TileMapLayer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.00102728, 0.139346, 0.397952, 1)
+offset_left = -1549.0
+offset_top = -1090.0
+offset_right = -1449.0
+offset_bottom = -990.0
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_18br3")
+stretch_mode = 1
+
+[node name="player" type="CharacterBody2D" parent="." groups=["player"]]
+script = ExtResource("2_pkg7o")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+
+[node name="settings_menu" parent="player" instance=ExtResource("3_gbfbk")]
+unique_name_in_owner = true
+
+[node name="buy_drones" parent="player" instance=ExtResource("4_ioo17")]
+offset_left = -225.0
+offset_top = -241.0
+offset_right = -185.0
+offset_bottom = -201.0
+size_flags_horizontal = 4
+
+[node name="background3" type="TileMapLayer" parent="."]
 
 [node name="resources" type="TileMapLayer" parent="." groups=["resources"]]
-tile_map_data = PackedByteArray("AADp/+v/AAAAAAAAAADz/+v/AAAAAAAAAAAEAOv/AAAAAAAAAAAQAOv/AAAAAAAAAADy/wkAAQAAAAAAAAAFAAkAAQAAAAAAAAD4/wMAAQAAAAAAAAAGAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAGAAgAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAkAAQAAAAAAAAAHAAMAAgAAAAAAAQD9/wcAAgAAAAAAAQD+/wQAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADp/+v/AAAAAAAAAADz/+v/AAAAAAAAAAAEAOv/AAAAAAAAAAAQAOv/AAAAAAAAAADy/wkAAQAAAAAAAAAFAAkAAQAAAAAAAAD4/wMAAQAAAAAAAAAGAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAGAAgAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAkAAQAAAAAAAAAHAAMAAgAAAAAAAQD9/wcAAgAAAAAAAQD+/wQAAQAAAAAAAAD5/wMAAQAAAAAAAAD6/wkAAgAAAAAAAQD9/wkAAgAAAAAAAQD8/wQAAgAAAAAAAQA=")
 tile_set = SubResource("TileSet_hqkll")
-script = ExtResource("2_mdkto")
+script = ExtResource("4_dwbse")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_436eo")
 
 [node name="drop_off" type="Area2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-1, 1)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="drop_off"]
+position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_a27g5")
 
-[node name="drone" parent="." instance=ExtResource("5_ui4t2")]
+[node name="utils" type="Node" parent="." groups=["utils"]]
+script = ExtResource("5_dwbse")
+
+[node name="drone" parent="." groups=["drones"] instance=ExtResource("5_ui4t2")]
+position = Vector2(-15, 99)
 
 [node name="drone2" parent="." instance=ExtResource("5_ui4t2")]
+position = Vector2(39, -296)
 
-[node name="utils" type="Node" parent="." groups=["utils"]]
-script = ExtResource("6_4a3d0")
+[node name="drone3" parent="." instance=ExtResource("5_ui4t2")]
+position = Vector2(-4, -200)
+
+[node name="drone4" parent="." instance=ExtResource("5_ui4t2")]
+position = Vector2(39, -296)
+
+[node name="drone5" parent="." instance=ExtResource("5_ui4t2")]
+position = Vector2(-4, -200)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-128, -140)
+occluder = SubResource("OccluderPolygon2D_pkg7o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="body_entered" from="drop_off" to="." method="_on_drop_off_body_entered"]

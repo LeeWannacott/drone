@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://g3umyegkt4u6"]
+
+[ext_resource type="Texture2D" uid="uid://b41nr6p732qdr" path="res://player_settings/iconset/149.png" id="1_dmw5h"]
+[ext_resource type="Texture2D" uid="uid://runk7wc5jxo" path="res://player_settings/iconset/150.png" id="2_2df3u"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_87xg6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ophps"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="PanelContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("CanvasTexture_87xg6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="buy_drone" type="Button" parent="TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+tooltip_text = "Increase Drone"
+icon = ExtResource("1_dmw5h")
+flat = true
+
+[node name="increase_drone_speed" type="Button" parent="TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Drone Speed"
+icon = ExtResource("2_2df3u")
+flat = true
+icon_alignment = 1
+
+[node name="drone_amount_label" type="Label" parent="TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 46.0
+offset_right = 50.0
+offset_bottom = 69.0
+grow_horizontal = 2
+text = "jhjjjjh"
+label_settings = SubResource("LabelSettings_ophps")
