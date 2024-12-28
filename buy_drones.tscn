@@ -71,11 +71,10 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = 46.0
 offset_right = 50.0
-offset_bottom = 69.0
+offset_bottom = 49.0
 grow_horizontal = 2
-text = "0
+text = "0 / 0
 "
 label_settings = SubResource("LabelSettings_ophps")
 
@@ -123,13 +122,56 @@ icon_alignment = 1
 [node name="drill_drone_amount" type="Label" parent="HBoxContainer/drill_drone/TextureRect"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_top = 46.0
-offset_right = 50.0
-offset_bottom = 69.0
-grow_horizontal = 2
-text = "0"
+offset_right = 100.0
+offset_bottom = 23.0
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_ophps")
+
+[node name="defuse_drone" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="draw_drone2" type="Node2D" parent="HBoxContainer/defuse_drone"]
+z_index = 1
+position = Vector2(43, 32)
+script = ExtResource("4_xbl4f")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/defuse_drone"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("CanvasTexture_87xg6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/defuse_drone/TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="buy_defuse_drone" type="Button" parent="HBoxContainer/defuse_drone/TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+tooltip_text = "Increase Drone"
+icon = ExtResource("1_87xg6")
+flat = true
+
+[node name="increase_defuse_drone_speed" type="Button" parent="HBoxContainer/defuse_drone/TextureRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Drone Speed"
+icon = ExtResource("2_ophps")
+flat = true
+icon_alignment = 1
+
+[node name="defuse_drone_amount" type="Label" parent="HBoxContainer/defuse_drone/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 23.0
+text = "0 / 0"
 label_settings = SubResource("LabelSettings_ophps")

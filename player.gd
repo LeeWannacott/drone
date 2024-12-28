@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 # @onready var saved_game:SavedGame = SavedGame.new()
 # @onready var loaded_game:SavedGame = load(save_game_filepath) as SavedGame
+@onready var resources := get_tree().get_first_node_in_group("resources")
 @onready var game_config:ConfigFile = ConfigFile.new()
 @onready var settings_menu = %settings_menu
 @onready var drone_type := "base"
@@ -15,7 +16,7 @@ func _physics_process(delta):
 	move_vec= player_direction()
 	velocity = move_vec *(500)
 	move_and_slide()# if Input.is_action_just_pressed()
-	# queue_redraw()
+	queue_redraw()
 	pass
 
 func _ready():
@@ -58,5 +59,7 @@ func save_game_settings()->void:
 	game_config.save(game_config_path)
 	print_debug("saved when cloded")
 
-# func _draw() -> void:
-	# draw_string(ThemeDB.fallback_font,global_position+get_global_mouse_position(),str(get_global_mouse_position()))
+
+func _draw() -> void:
+	var local_pos = (resources.local_to_map(get_global_mouse_position()))
+	draw_string(ThemeDB.fallback_font,local_pos,str(local_pos))

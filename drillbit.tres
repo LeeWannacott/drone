@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cojfjgscw4ybs"]
+
+[ext_resource type="Texture2D" uid="uid://ctfpd3ejswpsu" path="res://drillbit.png" id="1_2u84r"]
+
+[resource]
+atlas = ExtResource("1_2u84r")
+region = Rect2(80, 632, 596, 48)

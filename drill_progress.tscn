@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://3oi7u3htl36"]
+
+[ext_resource type="Texture2D" uid="uid://cojfjgscw4ybs" path="res://drillbit.tres" id="1_bslv2"]
+
+[node name="drill_progress" type="Node2D"]
+
+[node name="drill_progress_bar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+offset_right = 224.0
+offset_bottom = 27.0
+rotation = 1.57161
+scale = Vector2(0.5, 0.5)
+texture_under = ExtResource("1_bslv2")
+texture_progress = ExtResource("1_bslv2")
+tint_under = Color(0, 0, 0, 1)

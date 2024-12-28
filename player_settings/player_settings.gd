@@ -68,7 +68,6 @@ func load_game_settings()->void:
 		player.settings_menu.create_action_list();
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(ResourceUID.get_id_path(ResourceUID.text_to_id("c7wdrpp6dc5v0")))
 	options_menu["video"].connect("pressed",_on_video_menu_button_pressed)
 	options_menu["sound"].connect("pressed",_on_sound_menu_button_pressed)
 	options_menu["resume"].connect("pressed",_on_resume_menu_button_pressed)
